@@ -43,17 +43,17 @@
 		{
 			icon: 'fa-solid fa-book',
 			name: 'Documentation',
-			url: 'https://discordtickets.app'
+			url: 'https://wiki.foxco-network.de/'
 		},
 		{
 			icon: 'fab fa-discord',
 			name: 'Support',
-			url: 'https://lnk.earth/discord'
+			url: 'https://support.foxco-network.de/'
 		},
 		{
 			icon: 'fa-solid fa-comments',
 			name: 'Feedback',
-			url: 'https://lnk.earth/dsctickets-feedback'
+			url: 'https://feedback.foxco-network.de/'
 		}
 	];
 </script>
@@ -106,7 +106,7 @@
 									class="text-gray-500 dark:text-slate-400 hover:text-blurple dark:hover:text-blurple cursor-pointer transition duration-300"
 								>
 									<i class="fa-solid fa-arrow-left" />
-									Back to the portal
+									Zurück zum Portal
 								</a>
 							</div>
 							{#if $page.route.id !== '/settings'}
@@ -126,44 +126,25 @@
 							{/if}
 							<p>
 								<a
-									href="https://discordtickets.app"
+									href="#"
 									target="_blank"
 									rel="noopener noreferrer"
 									class="hover:text-blurple dark:hover:text-blurple cursor-pointer transition duration-300"
 									>Discord Tickets</a
 								>
-								by
+								by eartharoid&trade; edited by
 								<a
-									href="https://eartharoid.me"
+									href="https://foxco-network.de/"
 									target="_blank"
 									rel="noopener noreferrer"
 									class="hover:text-blurple dark:hover:text-blurple cursor-pointer transition duration-300"
-									>eartharoid&trade;</a
+									>FoxCo - Network</a
 								>
 							</p>
-							<p>
-								<i class="fa-solid fa-copyright" />
-								{new Date().getFullYear()}
-								<a
-									href="https://eartharoid.me"
-									target="_blank"
-									class="hover:text-blurple dark:hover:text-blurple cursor-pointer transition duration-300"
-									>Isaac Saunders</a
-								>
-							</p>
-							<!-- <p class="my-4">
-								<a
-									href="https://lnk.earth/discord"
-									target="_blank"
-									class="hover:text-blurple text-lg transition duration-300"
-								>
-									<i class="fab fa-discord" />
-								</a>
-							</p> -->
 							<p class="text-xs my-4">
-								Discord Tickets is not an official Discord product.
+								Discord Tickets ist kein offizielles Discord-Produkt.
 								<br />
-								It is not affiliated with nor endorsed by Discord Inc.
+								Sie ist weder mit Discord Inc. verbunden noch wird sie von ihm unterstützt.
 							</p>
 						</footer>
 					{/if}

@@ -35,7 +35,7 @@
 				<a
 					href={`/auth/logout`}
 					class="flex items-center justify-center md:justify-end hover:font-medium"
-					title="Logout"
+					title="Ausloggen"
 				>
 					<img
 						src={`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp`}
@@ -48,13 +48,13 @@
 					{#if isDark}
 						<i
 							class="fa-solid fa-moon text-lg p-1 cursor-pointer hover:text-blurple transition duration-300"
-							title="Switch to light mode"
+							title="Wechsel in den hellen Modus"
 							on:click={() => toggle()}
 						/>
 					{:else}
 						<i
 							class="fa-solid fa-sun text-lg p-1 cursor-pointer hover:text-blurple transition duration-300"
-							title="Switch to dark mode"
+							title="Wechsel in den dunklen Modus"
 							on:click={() => toggle()}
 						/>
 					{/if}

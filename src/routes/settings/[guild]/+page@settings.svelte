@@ -14,7 +14,7 @@
 	const getProblemText = (p) => {
 		switch (p.id) {
 			case 'logChannelMissingPermission':
-				return `Please give the bot <span class="font-mono">${p.permission}</span> permission in the log channel.`;
+				return `Bitte gib dem Bot <span class="font-mono">${p.permission}</span> Rechte im log Channel.`;
 		}
 	};
 </script>
@@ -36,7 +36,7 @@
 				<a href={guild.id + '/categories/new'}>
 					<div class="p-2 rounded-xl border-blurple bg-blurple/20 border-2 link font-medium">
 						<i class="fa-solid fa-circle-info text-2xl float-left" />
-						Create a category to get started
+						Erstelle eine Kategorie um zu starten
 						<i class="fa-solid fa-arrow-right-long" />
 					</div>
 				</a>
@@ -48,21 +48,21 @@
 				class="bg-gray-100 dark:bg-slate-800 p-4 rounded-xl shadow-sm link"
 			>
 				<i class="fas fa-gears text-4xl mb-4" />
-				<p class="font-semibold text-center text-lg">General</p>
+				<p class="font-semibold text-center text-lg">Allgemein</p>
 			</a>
 			<a
 				href={guild.id + '/categories'}
 				class="bg-gray-100 dark:bg-slate-800 p-4 rounded-xl shadow-sm link"
 			>
 				<i class="fas fa-list text-4xl mb-4" />
-				<p class="font-semibold text-center text-lg">Categories</p>
+				<p class="font-semibold text-center text-lg">Kategorien</p>
 			</a>
 			<a
 				href={guild.id + '/panels'}
 				class="bg-gray-100 dark:bg-slate-800 p-4 rounded-xl shadow-sm link"
 			>
 				<i class="fas fa-sliders text-4xl mb-4" />
-				<p class="font-semibold text-center text-lg">Panels</p>
+				<p class="font-semibold text-center text-lg">Panel</p>
 			</a>
 			<a
 				href={guild.id + '/feedback'}
@@ -83,7 +83,7 @@
 				class="bg-red-300 dark:bg-red-500/20 hover:bg-red-500 dark:hover:bg-red-500 p-4 rounded-xl shadow-sm transition duration-300"
 			>
 				<i class="fas fa-triangle-exclamation text-4xl mb-4" />
-				<p class="font-semibold text-center text-lg">Reset</p>
+				<p class="font-semibold text-center text-lg">⚠️ Zurücksetzen ⚠️</p>
 			</a>
 		</div>
 	</div>
@@ -100,22 +100,22 @@
 					<br />
 					<span class="text-gray-500 dark:text-slate-400">
 						<i class="fa-solid fa-calendar-days" />
-						Added on
+						Hinzugefügt am:
 						{createdAt}
 					</span>
 				</p>
 			</div>
 			<div class="m-4 grid grid-cols-2 sm:grid-cols-3 gap-4">
 				<div>
-					<h6 class="font-semibold">Resolution time</h6>
+					<h6 class="font-semibold">Auflösungszeit</h6>
 					<p class="text-gray-500 dark:text-slate-400">{guild.stats.avgResolutionTime}</p>
 				</div>
 				<div>
-					<h6 class="font-semibold">Response time</h6>
+					<h6 class="font-semibold">Reaktionseit</h6>
 					<p class="text-gray-500 dark:text-slate-400">{guild.stats.avgResponseTime}</p>
 				</div>
 				<div>
-					<h6 class="font-semibold">Categories</h6>
+					<h6 class="font-semibold">Kategorien</h6>
 					<p class="text-gray-500 dark:text-slate-400">{guild.stats.categories.length}</p>
 				</div>
 				<div>
@@ -127,7 +127,7 @@
 					<p class="text-gray-500 dark:text-slate-400">{guild.stats.tickets}</p>
 				</div>
 				<div>
-					<h6 class="font-semibold">Most used category</h6>
+					<h6 class="font-semibold">Am meisten genutze Kategorie</h6>
 					<p class="text-gray-500 dark:text-slate-400">
 						{guild.stats.categories.sort((a, b) => b - a)[0]?.name ?? 'None'}
 					</p>

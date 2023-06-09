@@ -103,7 +103,7 @@
 							<div>
 								<label class="font-medium">
 									Antwort Typ
-									<Pflicht />
+									<Required />
 									<i
 										class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
 										title="Welchen Antwort Typ soll die Frage haben?"

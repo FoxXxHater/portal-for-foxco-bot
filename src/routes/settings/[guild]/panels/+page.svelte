@@ -136,7 +136,7 @@
 				<div>
 					<label class="font-medium">
 						<span class="font-medium">Kategorien</span>
-						<Pflicht />
+						<Required />
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
 							title="Welche Kategorien verfügbar sein sollen. (Müssen erst erstellt werden)"
@@ -173,7 +173,7 @@
 				<div>
 					<label>
 						<span class="font-medium">Titel</span>
-						<Pflicht />
+						<Required />
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
 							title="Der Eingebettete Titel"

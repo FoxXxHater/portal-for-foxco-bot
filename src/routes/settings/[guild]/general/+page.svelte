@@ -344,7 +344,7 @@
 								<label>
 									<p class="text-base">
 										Zeitzone
-										<Pflicht />
+										<Required />
 									</p>
 									<input
 										type="text"

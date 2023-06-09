@@ -173,7 +173,7 @@
 				<div>
 					<label class="font-medium">
 						Name
-						<Pflicht />
+						<Required />
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
 							title="Name der Kategorie"
@@ -185,7 +185,7 @@
 					<label class="font-medium">
 						Channel Name
 						{#if category.id}
-							<Pflicht />
+							<Required />
 						{/if}
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
@@ -244,7 +244,7 @@
 				<div>
 					<label class="font-medium">
 						Beschreibung
-						<Pflicht />
+						<Required />
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
 							title="Wofür ist diese Kategorie gedacht?"
@@ -260,7 +260,7 @@
 				<div>
 					<label class="font-medium">
 						Discord Kategorie
-						<Pflicht />
+						<Required />
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
 							title="Unter welcher Discord Channel Kategorie sollen die Tickets erstellt werden?"
@@ -282,7 +282,7 @@
 				<div>
 					<label class="font-medium">
 						Auswahl Emoji
-						<Pflicht />
+						<Required />
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
 							title="Welches Emoji soll für den Knopf/ Auswahl genutzt werden?"
@@ -336,7 +336,7 @@
 				<div>
 					<label class="font-medium">
 						Eröffnungsnachricht
-						<Pflicht />
+						<Required />
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
 							title="Was soll in der Nachricht stehen?"
@@ -510,7 +510,7 @@
 				<div>
 					<label class="font-medium">
 						Supporter Rollen
-						<Pflicht />
+						<Required />
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
 							title="Rollen die Tickets sehen und bearbeiten können"

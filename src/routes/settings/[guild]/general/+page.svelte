@@ -198,7 +198,7 @@
 					<div class="mx-4">
 						<div>
 							<label for="claimButton" class="font-medium text-base">
-								<Übernehmen>
+								<Uebernehmen>
 								<i
 									class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
 									title="Fügt einen Übernehmen/ Abgeben Knopf hinzu (wenn aktiviert in der Kategorie)"

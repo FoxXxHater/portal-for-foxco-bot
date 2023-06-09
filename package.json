@@ -1,5 +1,5 @@
 {
-	"name": "@discord-tickets/settings",
+	"name": "@foxco-portal/settings",
 	"private": false,
 	"version": "2.1.4",
 	"main": "build/index.js",

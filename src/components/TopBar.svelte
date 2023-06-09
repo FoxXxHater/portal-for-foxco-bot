@@ -22,9 +22,9 @@
 			<a href={base + '/settings'} class="flex justify-center md:justify-start">
 				<!-- <img src="/logo.png" class="h-8" alt="Discord Tickets" /> -->
 				<img
-					src="https://static.eartharoid.me/discord-tickets/logo/{isDark ? 'white' : 'dark'}.png"
+					src="https://foxco-network.de/wp-content/uploads/2021/11/cropped-logo-web-transparent-1.png"
 					class="h-8"
-					alt="Discord Tickets"
+					alt="FoxCo - Network Logo"
 				/>
 			</a>
 		</div>

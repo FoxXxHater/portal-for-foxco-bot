@@ -137,8 +137,8 @@
 									target="_blank"
 									rel="noopener noreferrer"
 									class="hover:text-blurple dark:hover:text-blurple cursor-pointer transition duration-300"
-									>FoxCo - Network</a
-								>
+								>FoxCo - Network
+								</a>
 							</p>
 							<p class="text-xs my-4">
 								Discord Tickets ist kein offizielles Discord-Produkt.

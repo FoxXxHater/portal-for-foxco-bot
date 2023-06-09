@@ -49,7 +49,7 @@
 				filter(search);
 				loading = false;
 				toasts.add({
-					description: 'Tag created',
+					description: 'Tag erstellt',
 					type: 'success'
 				});
 			}
@@ -61,7 +61,7 @@
 				behavior: 'smooth'
 			});
 			toasts.add({
-				description: 'Tag creation failed',
+				description: 'Erstellung des Tags fehlgeschlagen',
 				type: 'error'
 			});
 		}
@@ -88,7 +88,7 @@
 			} else {
 				loading = false;
 				toasts.add({
-					description: 'Tag saved',
+					description: 'Tag gespeichert',
 					type: 'success'
 				});
 			}
@@ -100,7 +100,7 @@
 				behavior: 'smooth'
 			});
 			toasts.add({
-				description: 'Tag saving failed',
+				description: 'Speichern des Tags fehlgeschlagen',
 				type: 'error'
 			});
 		}
@@ -122,7 +122,7 @@
 				filter(search);
 				loading = false;
 				toasts.add({
-					description: 'Tag deleted',
+					description: 'Tag gelöscht',
 					type: 'success'
 				});
 			}
@@ -134,7 +134,7 @@
 				behavior: 'smooth'
 			});
 			toasts.add({
-				description: 'Tag deletion failed',
+				description: 'Löschen des Tags fehlgeschlagen',
 				type: 'error'
 			});
 		}
@@ -144,10 +144,10 @@
 <div class="mb-8 text-orange-600 dark:text-orange-400 text-center">
 	<p>
 		<i class="fa-solid fa-triangle-exclamation" />
-		<a href="https://discordtickets.app/configuration/tags" class="font-semibold hover:underline"
-			>Read the documentation</a
+		<a href="https://wiki.foxco-network.de/en/discord/ticket-bot" class="font-semibold hover:underline"
+			>Lesen Sie die Dokumentation</a
 		>
-		to avoid problems.
+		um Probleme zu vermeiden
 	</p>
 </div>
 <h1 class="m-4 text-4xl font-bold text-center">Tags</h1>
@@ -168,7 +168,7 @@
 				<input
 					type="text"
 					class="form-input input"
-					placeholder="Search"
+					placeholder="Suchen"
 					bind:value={search}
 					on:input={(event) => filter(event.target.value)}
 				/>
@@ -185,7 +185,7 @@
 								? 'fa-angle-up'
 								: 'fa-angle-down'} float-right text-xl"
 						/>
-						<span class="text-sm"> Click to {expanded === tag.id ? 'collapse' : 'expand'}</span>
+						<span class="text-sm"> Klicken um {expanded === tag.id ? 'einzuklappen' : 'aufzuklappen'}</span>
 					</p>
 					{#if expanded === tag.id}
 						<div class="m-2">
@@ -204,7 +204,7 @@
 									{:else}
 										<i class="fa-solid fa-trash" />
 									{/if}
-									Delete
+									Löschen
 								</button>
 								<button
 									type="submit"
@@ -216,7 +216,7 @@
 									{#if loading}
 										<i class="fa-solid fa-spinner animate-spin" />
 									{/if}
-									Save
+									Speichern
 								</button>
 							</div>
 						</div>
@@ -227,7 +227,7 @@
 	</div>
 	<div class="w-full">
 		<div class="bg-white dark:bg-slate-700 p-4 rounded-xl shadow-sm">
-			<h3 class="text-center font-bold text-xl">Create a tag</h3>
+			<h3 class="text-center font-bold text-xl">Tag erstellen</h3>
 			<form on:submit|preventDefault={() => create()} class="text-lg my-4">
 				<div class="grid grid-cols-1 gap-2">
 					<TagInputs bind:state={tag} />
@@ -239,7 +239,7 @@
 						{#if loading}
 							<i class="fa-solid fa-spinner animate-spin" />
 						{/if}
-						Create
+						Erstellen
 					</button>
 				</div>
 			</form>

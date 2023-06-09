@@ -13,7 +13,7 @@
 	let modified = false;
 
 	beforeNavigate((navigation) => {
-		if (modified && !confirm('You have unsaved changes; are you sure you want to leave?')) {
+		if (modified && !confirm('Du hast ungespeicherte Einstellungen! Sicher das du sie verwerfen möchtest?')) {
 			navigation.cancel();
 		}
 	});
@@ -75,8 +75,8 @@
 
 			json.questions.forEach((q) => {
 				if (q.type === 'TEXT') {
-					if (q.value.length < q.minLength) throw `The value of the "${q.label}" question is shorter than the minimum length.`;
-					if (q.value.length > q.maxLength) throw `The value of the "${q.label}" question is longer than the maximum length.`;
+					if (q.value.length < q.minLength) throw `Der Wert der "${q.label}" Frage ist kürzer als das Minimum.`;
+					if (q.value.length > q.maxLength) throw `Der Wert der "${q.label}" Frage ist länger als das Maximum.`;
 				}
 			});
 
@@ -109,7 +109,7 @@
 	const del = async () => {
 		try {
 			const confirmed = confirm(
-				'Are you sure?\nThis will delete all associated tickets (including messages, feedback, etc).'
+				'Bist du wirklich sicher?\nDas wird alle Tickets, Nachrichten und Feedback löschen.'
 			);
 			if (!confirmed) return false;
 			// error = null;
@@ -145,13 +145,13 @@
 	<p>
 		<i class="fa-solid fa-triangle-exclamation" />
 		<a
-			href="https://discordtickets.app/configuration/categories"
-			class="font-semibold hover:underline">Read the documentation</a
+			href="https://wiki.foxco-network.de/en/discord/ticket-bot"
+			class="font-semibold hover:underline">Lesen Sie die Dokumentation</a
 		>
-		to avoid problems.
+		unm Fehler zu vermeiden.
 	</p>
 </div>
-<h1 class="m-4 text-4xl font-bold text-center">Categories</h1>
+<h1 class="m-4 text-4xl font-bold text-center">Kategorien</h1>
 <h2 class="m-4 text-2xl font-semibold text-center text-gray-500 dark:text-slate-400">
 	{emoji.get(category.emoji) ?? ''}
 	{category.name || 'New category'}
@@ -173,23 +173,23 @@
 				<div>
 					<label class="font-medium">
 						Name
-						<Required />
+						<Pflicht />
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="The name of the category"
+							title="Name der Kategorie"
 						/>
 						<input type="text" class="form-input input" required bind:value={category.name} />
 					</label>
 				</div>
 				<div>
 					<label class="font-medium">
-						Channel name
+						Channel Name
 						{#if category.id}
-							<Required />
+							<Pflicht />
 						{/if}
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="The name of ticket channels"
+							title="Der Name der Ticket Channel"
 						/>
 						<input
 							type="text"
@@ -200,7 +200,7 @@
 						/>
 					</label>
 					{#if category.channelName}
-						<p class="text-sm font-semibold mt-2 mb-1">Preview</p>
+						<p class="text-sm font-semibold mt-2 mb-1">Vorschau:</p>
 						<div
 							class="block p-3 w-full rounded-md shadow-sm bg-blurple/20 dark:bg-blurple/20 text-sm font-mono break-words"
 						>
@@ -217,10 +217,10 @@
 				</div>
 				<div>
 					<label for="claiming" class="font-medium">
-						Claiming
+						Übernehmen
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="Allow staff to claim tickets?"
+							title="Soll Supportern das Übernehmen von Tickets erlaubt werden?"
 						/>
 						<input
 							type="checkbox"
@@ -233,21 +233,21 @@
 				</div>
 				<div>
 					<label class="font-medium">
-						Cooldown
+						Wartezeit für neues Ticket
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="How long should members have to wait before creating another ticket?"
+							title="Wie lange müssen User warten bevor sie ein neues Ticket in dieser Kategorie erstellen können?"
 						/>
 						<input type="text" class="form-input input" bind:value={category.cooldown} />
 					</label>
 				</div>
 				<div>
 					<label class="font-medium">
-						Description
-						<Required />
+						Beschreibung
+						<Pflicht />
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="What is this category for?"
+							title="Wofür ist diese Kategorie gedacht?"
 						/>
 						<input
 							type="text"
@@ -259,15 +259,15 @@
 				</div>
 				<div>
 					<label class="font-medium">
-						Discord category
-						<Required />
+						Discord Kategorie
+						<Pflicht />
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="Which category channel should ticket channels be created under?"
+							title="Unter welcher Discord Channel Kategorie sollen die Tickets erstellt werden?"
 						/>
 						<select class="form-multiselect input" required bind:value={category.discordCategory}>
 							{#if !category.discordCategory || category.discordCategory === 'new'}
-								<option value="new">Create a new category</option>
+								<option value="new">Erstelle eine neue</option>
 								<option disabled>------------</option>
 							{/if}
 							{#each channels as channel}
@@ -281,11 +281,11 @@
 				</div>
 				<div>
 					<label class="font-medium">
-						Emoji
-						<Required />
+						Auswahl Emoji
+						<Pflicht />
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="Emoji used for buttons & dropdowns"
+							title="Welches Emoji soll für den Knopf/ Auswahl genutzt werden?"
 						/>
 						<span class="text-2xl">{emoji.get(category.emoji) ?? ''}</span>
 						<input type="text" class="form-input input" required bind:value={category.emoji} />
@@ -296,7 +296,7 @@
 						Feedback
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="Gather feedback from members?"
+							title="Sollen User Feedback geben können?"
 						/>
 						<input
 							type="checkbox"
@@ -309,20 +309,20 @@
 				</div>
 				<div>
 					<label class="font-medium">
-						Image
+						Bild
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="A link to an image to be sent with the opening message."
+							title="Ein Link zu einem Bild was mit der Eröffnungsnachricht geschickt werden soll"
 						/>
 						<input type="url" class="form-input input" bind:value={category.image} />
 					</label>
 				</div>
 				<div>
 					<label class="font-medium">
-						Member limit
+						User Limit
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="How many tickets in this category can each member have open?"
+							title="Wie viele Tickets kann ein User in dieser Kategorie offen haben? (max. 10)"
 						/>
 						<input
 							type="number"
@@ -335,11 +335,11 @@
 				</div>
 				<div>
 					<label class="font-medium">
-						Opening message
-						<Required />
+						Eröffnungsnachricht
+						<Pflicht />
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="Content to be sent in the opening message of each ticket."
+							title="Was soll in der Nachricht stehen?"
 						/>
 						<textarea
 							class="form-input input"
@@ -350,7 +350,7 @@
 						/>
 					</label>
 					{#if category.openingMessage}
-						<p class="text-sm font-semibold mt-2 mb-1">Preview</p>
+						<p class="text-sm font-semibold mt-2 mb-1">Vorschau</p>
 						<discord-messages
 							no-background={true}
 							light-theme={data.theme !== 'dark'}
@@ -379,7 +379,7 @@
 									, <br />
 								{/if}
 								<discord-mention highlight>{data.user.username}</discord-mention>
-								has created a new ticket
+								hat ein neues Ticket erstellt
 								<discord-embed
 									slot="embeds"
 									color={data.settings.primaryColour}
@@ -400,7 +400,7 @@
 									{#if category.requireTopic}
 										<discord-embed-fields slot="fields">
 											<discord-embed-field field-title="Topic">
-												This is a pretty good preview
+												Das ist eine wirklich gute Vorschau...
 											</discord-embed-field>
 										</discord-embed-fields>
 									{/if}
@@ -413,13 +413,13 @@
 								<discord-attachments slot="components">
 									<discord-action-row>
 										{#if category.requireTopic || category.questions.length > 0}
-											<discord-button type="secondary">✏️ Edit</discord-button>
+											<discord-button type="secondary">✏️ Bearbeiten</discord-button>
 										{/if}
 										{#if category.claiming && data.settings.claimButton}
-											<discord-button type="secondary">🙌 Claim</discord-button>
+											<discord-button type="secondary">🙌 Übernehmen</discord-button>
 										{/if}
 										{#if data.settings.closeButton}
-											<discord-button type="destructive">✖️ Close</discord-button>
+											<discord-button type="destructive">✖️ Schließen</discord-button>
 										{/if}
 									</discord-action-row>
 								</discord-attachments>
@@ -429,10 +429,10 @@
 				</div>
 				<div>
 					<label class="font-medium">
-						Ping roles
+						Ping Rollen (Supporter)
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="Roles that should be pinged upon ticket creation."
+							title="Welche Rollen sollen bei einem neuen Ticket gepingt werden?"
 						/>
 						<select
 							multiple
@@ -450,15 +450,15 @@
 				</div>
 				<div>
 					<label class="font-medium">
-						Slow mode
+						Slowmode
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="Should slow mode be enabled?"
+							title="Soll der Slowmode eingeschaltet werden?"
 						/>
 						<select class="form-multiselect input font-normal" bind:value={category.ratelimit}>
 							<option value={null} class="p-1">
 								<i class="fa-solid fa-at text-gray-500 dark:text-slate-400" />
-								Off
+								Nein
 							</option>
 							{#each slowmodes as slowmode}
 								<option value={ms(slowmode) / 1000} class="p-1">
@@ -471,10 +471,10 @@
 				</div>
 				<div>
 					<label class="font-medium">
-						Required roles
+						Rollenvorraussetzung
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="Roles that a user needs to create a ticket."
+							title="Welche Rolle braucht ein User um ein Ticket erstellen zu können?"
 						/>
 						<select
 							multiple
@@ -492,10 +492,10 @@
 				</div>
 				<div>
 					<label for="requireTopic" class="font-medium">
-						Require topic
+						Themenvorraussetzung
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="Require a topic before ticket creation?"
+							title="Soll ein Thema genannt werden bevor ein Ticket geöffnet wird?"
 						/>
 						<input
 							type="checkbox"
@@ -509,11 +509,11 @@
 				</div>
 				<div>
 					<label class="font-medium">
-						Staff roles
-						<Required />
+						Supporter Rollen
+						<Pflicht />
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="Roles that will be able to view tickets."
+							title="Rollen die Tickets sehen und bearbeiten können"
 						/>
 						<select
 							multiple
@@ -532,10 +532,10 @@
 				</div>
 				<div>
 					<label class="font-medium">
-						Total limit
+						Maximale Ticket Anzahl
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="The total number of tickets that can be open at once."
+							title="Die maximale Anzahl aller Tickets die gleichzeitig offen sein können (max. 50)"
 						/>
 						<input
 							type="number"
@@ -551,16 +551,16 @@
 				<div class="bg-white dark:bg-slate-700 p-4 rounded-xl shadow-sm">
 					<div class="flex flex-col gap-4">
 						<div class="text-center">
-							<h3 class="font-bold text-xl">Questions</h3>
+							<h3 class="font-bold text-xl">Vor- Fragen</h3>
 							<p class="text-gray-500 dark:text-slate-400">{category.questions.length}/5</p>
 						</div>
 						{#if category.questions.length > 0}
 							<div>
 								<label class="font-medium">
-									Custom topic
+									Eigenes Thema
 									<i
 										class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-										title="Which question's value should be used as the ticket topic?"
+										title="Welche Antwort soll als Ticket Thema genutzt werden?"
 									/>
 									<select
 										class="form-multiselect input font-normal"
@@ -568,7 +568,7 @@
 									>
 										<option value={null} class="p-1">
 											<i class="fa-solid fa-at text-gray-500 dark:text-slate-400" />
-											None
+											Keins
 										</option>
 										<option disabled>------------</option>
 										{#each category.questions as q}
@@ -592,7 +592,7 @@
 									on:click={() => {
 										category.questions.push({
 											_id: Date.now().toString(),
-											label: `Question ${category.questions.length + 1}`,
+											label: `Frage ${category.questions.length + 1}`,
 											maxLength: 1000,
 											minLength: 0,
 											options: [],
@@ -607,7 +607,7 @@
 									}}
 								>
 									<i class="fa-solid fa-circle-plus" />
-									Add
+									Hinzufügen
 								</button>
 							</div>
 						{/if}
@@ -626,7 +626,7 @@
 							{:else}
 								<i class="fa-solid fa-trash" />
 							{/if}
-							Delete
+							Löschen
 						</button>
 					{/if}
 					<button
@@ -637,7 +637,7 @@
 						{#if loadingSubmit}
 							<i class="fa-solid fa-spinner animate-spin" />
 						{/if}
-						Submit
+						Speichern
 					</button>
 				</div>
 			</div>

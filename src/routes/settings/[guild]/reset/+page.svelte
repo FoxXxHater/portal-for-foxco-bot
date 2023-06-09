@@ -35,7 +35,7 @@
 	};
 </script>
 
-<h1 class="m-4 text-4xl font-bold text-center">Reset</h1>
+<h1 class="m-4 text-4xl font-bold text-center">Zurücksetzen</h1>
 <div class="m-2 sm:p-4 max-w-3xl mx-auto text-center">
 	{#if error}
 		<div id="error" class="break-words">
@@ -50,9 +50,8 @@
 	<div
 		class="bg-red-400 dark:bg-red-500 text-red-800 dark:text-red-400 bg-opacity-40 dark:bg-opacity-20 p-6 px-12 rounded-lg max-w-lg inline-block"
 	>
-		<p class="font-semibold text-xl">Caution</p>
-		This will irreversibly delete all data associated with your guild,
-		<b>including tickets and archives!</b>
+		<p class="font-semibold text-xl">ACHTUNG</p>
+		Das wird unwiderruflich <b>alle Daten</b> (Tickets, Archive, Feedbacks, etc.) die mit deinem Server zusammenhängen <b>löschen!</b>
 	</div>
 
 	<div>
@@ -67,7 +66,7 @@
 			{:else}
 				<i class="fa-solid fa-trash" />
 			{/if}
-			Delete
+			Wirklich löschen
 		</button>
 	</div>
 </div>

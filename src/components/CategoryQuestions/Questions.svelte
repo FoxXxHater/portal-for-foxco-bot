@@ -38,7 +38,7 @@
 
 	const del = async (q) => {
 		if (q.id) {
-			const confirmed = confirm('Are you sure? This will delete all responses.');
+			const confirmed = confirm('Bist du dir wirklich sicher? Das wird alle Antworten löschen');
 			if (!confirmed) return false;
 			loading[q.id] = true;
 			const url = `/api/admin/guilds/${$page.params.guild}/categories/${$page.params.category}/questions/${q.id}`;
@@ -75,7 +75,7 @@
 							type="button"
 							disabled={loading[q.id]}
 							class="text-red-300 hover:text-red-500 dark:text-red-500/50 dark:hover:text-red-500 transition duration-300 disabled:cursor-not-allowed"
-							title="Remove"
+							title="Löschen"
 							on:click={() => del(q)}
 						>
 							{#if loading[q.id]}
@@ -88,7 +88,7 @@
 							class="select-none text-gray-500 dark:text-slate-400 hover:text-blurple dark:hover:text-blurple cursor-pointer transition duration-300 font-medium flex justify-between"
 							on:click={() => (expanded = expanded === q._id ? null : q._id)}
 						>
-							<span class="text-sm"> Click to {expanded === q._id ? 'collapse' : 'expand'}</span>
+							<span class="text-sm"> Klicken um {expanded === q._id ? 'einzuklappen' : 'aufzuklappen'}</span>
 							<i
 								class="fa-solid {expanded === q._id
 									? 'fa-angle-up'
@@ -102,11 +102,11 @@
 						<div class="grid grid-cols-1 gap-3">
 							<div>
 								<label class="font-medium">
-									Type
-									<Required />
+									Antwort Typ
+									<Pflicht />
 									<i
 										class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-										title="What type of input should the question use?"
+										title="Welchen Antwort Typ soll die Frage haben?"
 									/>
 									<select
 										class="form-multiselect input text-sm"
@@ -117,15 +117,15 @@
 											else if (q.type === 'MENU') q.maxLength = 1;
 										}}
 									>
-										<option value={null} class="p-1" default disabled>Select an input type</option>
+										<option value={null} class="p-1" default disabled>Wähle einen Eingabe Typ</option>
 										<option value="TEXT" class="p-1"> Text </option>
 										<option
 											value="MENU"
 											class="p-1"
 											disabled
-											title="Disabled until supported by Discord"
+											title="Bleibt bis zum Support von Discord vorerst deaktiviert"
 										>
-											Select menu
+											Auswahl Menü
 										</option>
 									</select>
 								</label>

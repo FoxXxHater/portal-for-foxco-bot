@@ -157,7 +157,7 @@
 
 <div class="max-w-3xl my-8 mx-auto">
 	<hr class="border-white dark:border-slate-700 mx-24 my-8" />
-	<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+	<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
 		<a href="https://wiki.foxco-network.de/en/discord/ticket-bot" target="_blank" rel="noopener noreferrer">
 			<div
 				class="bg-gray-50/75 dark:bg-slate-800/75 p-4 rounded-xl shadow-sm link flex items-center gap-4"
@@ -165,7 +165,7 @@
 				<i class="fa-solid fa-book text-5xl" />
 				<div>
 					<p class="text-lg font-semibold">Dokumentation</p>
-					<p>Folge dem Guid um Antworten zu finden</p>
+					<p>Schaue im Guide nach weiteren Informationen</p>
 				</div>
 			</div>
 		</a>

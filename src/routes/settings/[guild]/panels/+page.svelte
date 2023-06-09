@@ -60,7 +60,7 @@
 			: panel.type;
 </script>
 
-<h1 class="m-4 text-4xl font-bold text-center">Create a panel</h1>
+<h1 class="m-4 text-4xl font-bold text-center">Ein Panel erstellen </h1>
 <div class="m-2 sm:p-4 max-w-3xl mx-auto">
 	{#if error}
 		<div id="error" class="text-center break-words">
@@ -77,14 +77,14 @@
 			{#if panel.channel !== 'new' && panel.type === 'MESSAGE'}
 				<p class="text-cyan-500 p-2">
 					<i class="fa-solid fa-circle-info text-2xl" />
-					Make sure members can read and send messages in
-					<span class="font-mono">#{getChannelName(panel.channel)}</span>.
+					Stelle sicher das User in
+					<span class="font-mono">#{getChannelName(panel.channel)}</span> schreiben und lesen können.
 				</p>
 			{:else if panel.channel !== 'new' && panel.type !== 'MESSAGE'}
 				<p class="text-cyan-500 p-2">
 					<i class="fa-solid fa-circle-info text-2xl" />
-					Make sure members can read but not send messages in
-					<span class="font-mono">#{getChannelName(panel.channel)}</span>.
+					Stelle sicher das User in 
+					<span class="font-mono">#{getChannelName(panel.channel)}</span> nur lesen aber nicht schreiben können.
 				</p>
 			{/if}
 		</div>
@@ -92,19 +92,19 @@
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 				<div>
 					<label>
-						<span class="font-medium">Type</span>
+						<span class="font-medium">Öffnungs Typ</span>
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="How will members use the panel?"
+							title="Wie sollen User das Ticket öffnen?"
 						/>
 						<select class="form-multiselect input font-normal" required bind:value={panel.type}>
 							<option value="BUTTON" class="p-1" disabled={panel.categories.length > 5}>
 								<i class="fa-solid fa-at text-gray-500 dark:text-slate-400" default />
-								Buttons
+								Knöpfe
 							</option>
 							<option value="MENU" class="p-1">
 								<i class="fa-solid fa-at text-gray-500 dark:text-slate-400" />
-								Select menu (dropdown)
+								Auswahl Menü (dropdown)
 							</option>
 							<!-- <option value="MESSAGE" class="p-1" disabled={panel.categories.length > 1}>
 								<i class="fa-solid fa-at text-gray-500 dark:text-slate-400" />
@@ -118,10 +118,10 @@
 						<span class="font-medium">Channel</span>
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="The category options to be available"
+							title="In welchem Channel soll das Panel sein?"
 						/>
 						<select required class="form-multiselect input font-normal" bind:value={panel.channel}>
-							<option value="new">Create a new channel</option>
+							<option value="new">Neuen Channel erstellen</option>
 							<option disabled>------------</option>
 							{#each channels as channel}
 								{channel.id}
@@ -135,11 +135,11 @@
 				</div>
 				<div>
 					<label class="font-medium">
-						<span class="font-medium">Categories</span>
-						<Required />
+						<span class="font-medium">Kategorien</span>
+						<Pflicht />
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="The category options to be available"
+							title="Welche Kategorien verfügbar sein sollen. (Müssen erst erstellt werden)"
 						/>
 						<select
 							multiple
@@ -158,10 +158,10 @@
 				</div>
 				<div>
 					<label class="font-medium">
-						<span class="font-medium">Description</span>
+						<span class="font-medium">Beschreibung/ Text (max. 4096 Zeichen)</span>
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="Optional - the embed description"
+							title="Optional - der Text der in der Eingebetteten Nachricht stehen soll"
 						/>
 						<textarea
 							class="form-input input h-24"
@@ -172,11 +172,11 @@
 				</div>
 				<div>
 					<label>
-						<span class="font-medium">Title</span>
-						<Required />
+						<span class="font-medium">Titel</span>
+						<Pflicht />
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="The embed title"
+							title="Der Eingebettete Titel"
 							required
 						/>
 						<input type="text" class="form-input input" required bind:value={panel.title} />
@@ -184,20 +184,20 @@
 				</div>
 				<div>
 					<label>
-						<span class="font-medium">Large image</span>
+						<span class="font-medium">Großes Bild</span>
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="Optional - the embed image"
+							title="Optional - Link zum Eingebetteten Bild"
 						/>
 						<input type="url" class="form-input input" bind:value={panel.image} />
 					</label>
 				</div>
 				<div>
 					<label>
-						<span class="font-medium">Small image (thumbnail)</span>
+						<span class="font-medium">Kleines Bild (Thumbnail)</span>
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="Optional - the embed thumbnail"
+							title="Optional - Das Eingebettete Thumbnail"
 						/>
 						<input type="url" class="form-input input" bind:value={panel.thumbnail} />
 					</label>
@@ -211,7 +211,7 @@
 						{#if loading}
 							<i class="fa-solid fa-spinner animate-spin" />
 						{/if}
-						Create
+						Erstellen
 					</button>
 				</div>
 			</div>
@@ -221,7 +221,7 @@
 		<div class="p-2 rounded-xl border-cyan-500 bg-cyan-500/20 border-2">
 			<i class="fa-solid fa-circle-info text-2xl text-cyan-500" />
 			<br />
-			Looking to edit or remove a panel? Just delete the message or channel in Discord.
+			Möchtest du ein Panel ändern oder Löschen? Lösche die Nachricht einfach in Discord und erstelle ein neues.
 		</div>
 	</div>
 </div>

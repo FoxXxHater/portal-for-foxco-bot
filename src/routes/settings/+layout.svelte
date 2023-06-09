@@ -42,7 +42,7 @@
 	const links = [
 		{
 			icon: 'fa-solid fa-book',
-			name: 'Documentation',
+			name: 'Dokumentation',
 			url: 'https://wiki.foxco-network.de/'
 		},
 		{
@@ -106,7 +106,7 @@
 									class="text-gray-500 dark:text-slate-400 hover:text-blurple dark:hover:text-blurple cursor-pointer transition duration-300"
 								>
 									<i class="fa-solid fa-arrow-left" />
-									Zurück zum Portal
+									Zurück zum Dashboard
 								</a>
 							</div>
 							{#if $page.route.id !== '/settings'}
@@ -126,7 +126,6 @@
 							{/if}
 							<p>
 								<a
-									href="#"
 									target="_blank"
 									rel="noopener noreferrer"
 									class="hover:text-blurple dark:hover:text-blurple cursor-pointer transition duration-300"

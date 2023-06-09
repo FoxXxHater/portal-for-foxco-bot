@@ -19,7 +19,7 @@
 			href={`${base}/${$page.params.guild}/feedback`}
 			class="hover:text-blurple transition duration-300"
 		>
-			View feedback in the portal
+			Feedback im Portal ansehen
 			<i class="fa-solid fa-arrow-right-long" />
 		</a>
 	</div>

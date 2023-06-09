@@ -7,14 +7,14 @@
 	const { categories } = data;
 </script>
 
-<h1 class="m-4 text-4xl font-bold text-center">Categories</h1>
+<h1 class="m-4 text-4xl font-bold text-center">Kategorien</h1>
 <div class="m-2 p-4 max-w-lg mx-auto">
 	<div class="grid grid-cols-1 gap-4">
 		<a href="./categories/new">
 			<div
 				class="bg-gray-100 dark:bg-slate-800 p-4 rounded-xl shadow-sm font-semibold text-center text-lg link"
 			>
-				<i class="fa-solid fa-circle-plus mr-2" /><span>Create</span>
+				<i class="fa-solid fa-circle-plus mr-2" /><span>Erstellen</span>
 			</div>
 		</a>
 		{#each categories as category}
@@ -28,19 +28,19 @@
 						{#if browser}
 							<p>
 								<i class="fa-solid fa-calendar-days mr-2" />
-								Created
+								Erstellt am:
 								{new Intl.DateTimeFormat('default').format(new Date(category.createdAt))}
 							</p>
 						{/if}
 						<p>
 							<i class="fa-solid fa-clock mr-2" />
 							{category.stats.avgResponseTime}
-							response
+							Antwortzeit
 						</p>
 						<p>
 							<i class="fa-solid fa-square-check mr-2" />
 							{category.stats.avgResolutionTime}
-							resolution
+							Lösungszeit
 						</p>
 					</div>
 					<div class="flex items-center gap-4">

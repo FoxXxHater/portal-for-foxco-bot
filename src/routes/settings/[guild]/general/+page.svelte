@@ -13,7 +13,7 @@
 	let modified = false;
 
 	beforeNavigate((navigation) => {
-		if (modified && !confirm('You have unsaved changes; are you sure you want to leave?')) {
+		if (modified && !confirm('Du hast nicht gespeicherte Einstellungen! Sicher das du sie verwerfen möchtest?')) {
 			navigation.cancel();
 		}
 	});
@@ -29,7 +29,7 @@
 
 	let { settings, channels, locales, roles } = data;
 
-	const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+	const days = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
 	const expanded = { workingHours: false };
 
 	channels = channels.filter((c) => c.type === 0); // text
@@ -84,7 +84,7 @@
 	};
 </script>
 
-<h1 class="m-4 text-4xl font-bold text-center">General settings</h1>
+<h1 class="m-4 text-4xl font-bold text-center">Allgemeine Einstellungen</h1>
 <div class="m-2 p-4 max-w-lg mx-auto text-lg">
 	{#if error}
 		<div id="error" class="text-center break-words">
@@ -99,12 +99,15 @@
 	<div class="mb-8 text-orange-600 dark:text-orange-400 text-center">
 		<p class="font-semibold"><i class="fa-solid fa-triangle-exclamation" /> Warning</p>
 		<p>
-			This page is made to be "just about functional".
+			Diese Seite ist so konzipiert, dass sie "gerade noch funktioniert".
 			<a
-				href="https://discordtickets.app/configuration/general"
-				class="font-semibold hover:underline">Read the documentation</a
+				href="https://wiki.foxco-network.de/en/discord/ticket-bot"
+				class="font-semibold hover:underline">Lesen Sie die Dokumentation</a
 			>
-			to avoid breaking something.
+			um nicht etwas kaputt zu machen!
+			<br>
+			<br>
+			P.S. Habe das einfach nur Übersetzt, keine Ahnung was damit genau gemeint ist...
 		</p>
 	</div>
 	<form on:submit|preventDefault={() => submit()} on:change={() => (modified = true)}>
@@ -114,23 +117,23 @@
 					Auto close after
 					<i
 						class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-						title="How long should the bot wait before closing (for close command and stale tickets)?"
+						title="Wie lange soll der Bot warten, bevor er ein Ticket schließt (bei Schließ- Anfragen und veralteten Anfragen)?"
 					/>
 					<input type="text" class="form-input input" bind:value={settings.autoClose} required />
 				</label>
 			</div>
 			<div>
 				<label class="font-medium">
-					Auto tag channels
+					Auto Tag Channel
 					<i
 						class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-						title="Which channels should the bot respond with tags in?"
+						title="In welchen Channels soll der Bot automatisch auf Tags reagieren?"
 					/>
 					<select class="form-multiselect block input font-normal" bind:value={autoTag}>
-						<option value="custom">Specific channels</option>
-						<option value="ticket">Only ticket channels</option>
-						<option value="!ticket">All non-ticket channels</option>
-						<option value="all">All channels</option>
+						<option value="custom">Spezielle Channel (wie FAQ)</option>
+						<option value="ticket">Nur Tickets</option>
+						<option value="!ticket">Alle nicht Ticket Channel</option>
+						<option value="all">Alle Channel</option>
 					</select>
 					{#if autoTag === 'custom'}
 						<select
@@ -150,10 +153,10 @@
 			</div>
 			<div>
 				<label for="archive" class="font-medium">
-					Archive
+					Archiv Funktion
 					<i
 						class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-						title="Save messages sent in tickets for future use?"
+						title="Sollen Nachrichten in Tickets für spätere Nutzung gespeichert werden?"
 					/>
 					<input
 						type="checkbox"
@@ -166,10 +169,10 @@
 			</div>
 			<div>
 				<label class="font-medium">
-					Blocklist
+					Rollen Blockliste
 					<i
 						class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-						title="Which roles should the bot ignore?"
+						title="Welche Rollen soll der Bot ignorieren?"
 					/>
 					<select
 						multiple
@@ -187,18 +190,18 @@
 			</div>
 			<div>
 				<div class="font-medium">
-					Buttons
+					Knöpfe
 					<i
 						class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-						title="Which buttons should be enabled (if the feature is enabled in the category)?"
+						title="Welche Knöpfe sollen angezeigt werden? (wenn das Feature in der Kategorie aktiviert ist)"
 					/>
 					<div class="mx-4">
 						<div>
 							<label for="claimButton" class="font-medium text-base">
-								Claim
+								<Übernehmen>
 								<i
 									class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-									title="Add a claim/unclaim button to the opening message (if enabled in category)?"
+									title="Fügt einen Übernehmen/ Abgeben Knopf hinzu (wenn aktiviert in der Kategorie)"
 								/>
 								<input
 									type="checkbox"
@@ -211,10 +214,10 @@
 						</div>
 						<div>
 							<label for="closeButton" class="font-medium text-base">
-								Close
+								Schließen
 								<i
 									class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-									title="Add a close button to the opening message?"
+									title="Fügt einen Schließen Knopf hinzu"
 								/>
 								<input
 									type="checkbox"
@@ -230,30 +233,30 @@
 			</div>
 			<div>
 				<label class="font-medium">
-					Error colour
+					Error Farbe
 					<i
 						class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-						title="What colour should error embeds be?"
+						title="In welcher Farbe sollen Fehler angezeigt werden?"
 					/>
 					<input type="text" class="form-input input" bind:value={settings.errorColour} />
 				</label>
 			</div>
 			<div>
 				<label class="font-medium">
-					Footer
+					Fußzeile
 					<i
 						class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-						title="What text should be at the bottom of embeds?"
+						title="Was soll in der Fußzeile stehen? P.S Ehre wenn es so bleibt wie es ist! ♥"
 					/>
 					<input type="text" class="form-input input" bind:value={settings.footer} />
 				</label>
 			</div>
 			<div>
 				<label class="font-medium">
-					Locale
+					Sprache
 					<i
 						class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-						title="Which language should the bot respond in?"
+						title="In welcher Sprache soll der Bot Antworten?"
 					/>
 					<select class="form-multiselect input" bind:value={settings.locale}>
 						{#each locales as locale}
@@ -267,13 +270,13 @@
 			</div>
 			<div>
 				<label class="font-medium">
-					Log channel
+					Log Channel
 					<i
 						class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-						title="Which channel should logs be sent to?"
+						title="In welchen Channel sollen die Logs geschickt werden?"
 					/>
 					<select class="form-multiselect input" bind:value={settings.logChannel}>
-						<option value="">None</option>
+						<option value="">Keinen</option>
 						<option disabled>------------</option>
 						{#each channels as channel}
 							<option value={channel.id} class="p-1">
@@ -286,30 +289,30 @@
 			</div>
 			<div>
 				<label class="font-medium">
-					Primary colour
+					Primär Farbe
 					<i
 						class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-						title="What colour should normal embeds be?"
+						title="Welche Farbe soll die normale Einbettung haben?"
 					/>
 					<input type="text" class="form-input input" bind:value={settings.primaryColour} />
 				</label>
 			</div>
 			<div>
 				<label class="font-medium">
-					Stale after
+					Als Unbearbeitet markieren
 					<i
 						class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-						title="When should the bot remind members/staff about messages with no reply?"
+						title="Ab wann soll der Bot den Support Erinnern das es ein nicht bearbeitetes Ticket gibt?"
 					/>
 					<input type="text" class="form-input input" bind:value={settings.staleAfter} />
 				</label>
 			</div>
 			<div>
 				<label class="font-medium">
-					Success colour
+					Erfolg Farbe
 					<i
 						class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-						title="What colour should success embeds be?"
+						title="In welcher Farbe soll der 'Erfolg' dargestellt werden?"
 					/>
 					<input type="text" class="form-input input" bind:value={settings.successColour} />
 				</label>
@@ -317,10 +320,10 @@
 			<div>
 				<div class="font-medium grid grid-cols-1 gap-2">
 					<div>
-						Working hours
+						Support Zeiten
 						<i
 							class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
-							title="When can your members expect staff to be available?"
+							title="Wann ist der Support erreichbar/ werden Tickets bearbeitet?"
 						/>
 						<p
 							class="select-none text-gray-500 dark:text-slate-400 hover:text-blurple dark:hover:text-blurple cursor-pointer transition duration-300"
@@ -331,7 +334,7 @@
 									? 'fa-angle-up'
 									: 'fa-angle-down'} float-right text-xl"
 							/>
-							<span class="text-sm"> Click to {expanded.workingHours ? 'collapse' : 'expand'}</span>
+							<span class="text-sm"> Klicken um {expanded.workingHours ? 'einzuklappen' : 'aufzuklappen'}</span>
 						</p>
 					</div>
 
@@ -340,8 +343,8 @@
 							<div class="mx-4">
 								<label>
 									<p class="text-base">
-										Timezone
-										<Required />
+										Zeitzone
+										<Pflicht />
 									</p>
 									<input
 										type="text"
@@ -390,7 +393,7 @@
 			{#if loading}
 				<i class="fa-solid fa-spinner animate-spin" />
 			{/if}
-			Submit
+			Speichern
 		</button>
 	</form>
 </div>

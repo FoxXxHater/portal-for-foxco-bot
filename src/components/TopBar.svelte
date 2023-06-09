@@ -22,7 +22,7 @@
 			<a href={base + '/settings'} class="flex justify-center md:justify-start">
 				<!-- <img src="/logo.png" class="h-8" alt="Discord Tickets" /> -->
 				<img
-					src="https://foxco-network.de/wp-content/uploads/2021/11/cropped-logo-web-transparent-1.png"
+					src="https://foxco-network.de/wp-content/uploads/2021/11/logo-print-hd-transparent.png"
 					class="h-8"
 					alt="FoxCo - Network Logo"
 				/>

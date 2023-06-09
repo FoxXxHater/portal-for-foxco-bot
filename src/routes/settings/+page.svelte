@@ -37,11 +37,11 @@
 			<div class="grid grid-cols-1 gap-4">
 				{#if good.length === 0}
 					<div class="my-4">
-						<h3 class="font-semibold text-xl">Add your bot to a guild to get started</h3>
+						<h3 class="font-semibold text-xl">Lade den Bot zu einem Server ein um ihn zu Konfigurieren</h3>
 					</div>
 				{:else}
 					<div class="my-4">
-						<h3 class="font-semibold text-xl">Manage your guilds</h3>
+						<h3 class="font-semibold text-xl">Verwalte deine Server</h3>
 					</div>
 					{#each good as guild}
 						<a href={`${base}/settings/${guild.id}`}>
@@ -61,7 +61,7 @@
 
 			{#if good.length > 0}
 				<div class="my-4">
-					<h4 class="font-semibold">Add your bot to more guilds</h4>
+					<h4 class="font-semibold">Füge den Bot zu weiteren Servern hinzu</h4>
 				</div>
 			{/if}
 
@@ -81,7 +81,7 @@
 						class="bg-gray-100 dark:bg-slate-800 flex items-center gap-4 p-3 rounded-xl shadow-sm font-semibold text-lg link h-full"
 					>
 						<div class="w-full text-center">
-							<i class="fa-solid fa-circle-plus mr-2" /><span>Add</span>
+							<i class="fa-solid fa-circle-plus mr-2" /><span>Hinzufügen</span>
 						</div>
 					</div>
 				</a>
@@ -102,41 +102,41 @@
 			</div>
 			<div class="m-4 grid grid-cols-2 sm:grid-cols-3 gap-4">
 				<div>
-					<h6 class="font-semibold">Activated users</h6>
+					<h6 class="font-semibold">Aktivierte Benutzer</h6>
 					<p class="text-gray-500 dark:text-slate-400">{client.stats.activatedUsers}</p>
 				</div>
 				<div>
-					<h6 class="font-semibold">Archived messages</h6>
+					<h6 class="font-semibold">Archivierte Nachrichten</h6>
 					<p class="text-gray-500 dark:text-slate-400">{client.stats.archivedMessages}</p>
 				</div>
 				<div>
-					<h6 class="font-semibold">Resolution time</h6>
+					<h6 class="font-semibold">Auflösungszeit</h6>
 					<p class="text-gray-500 dark:text-slate-400">{client.stats.avgResolutionTime}</p>
 				</div>
 				<div>
-					<h6 class="font-semibold">Response time</h6>
+					<h6 class="font-semibold">Antwortzeit</h6>
 					<p class="text-gray-500 dark:text-slate-400">{client.stats.avgResponseTime}</p>
 				</div>
 				<div>
-					<h6 class="font-semibold">Categories</h6>
+					<h6 class="font-semibold">Kategorien</h6>
 					<p class="text-gray-500 dark:text-slate-400">{client.stats.categories}</p>
 				</div>
 				<div>
-					<h6 class="font-semibold">Guilds</h6>
+					<h6 class="font-semibold">Server</h6>
 					<p class="text-gray-500 dark:text-slate-400">{client.stats.guilds}</p>
 				</div>
 				<!-- <div>
-					<h6 class="font-semibold">Avg. members</h6>
+					<h6 class="font-semibold">Durch. Benutzer</h6>
 					<p class="text-gray-500 dark:text-slate-400">
 						{Math.floor(client.stats.members / client.stats.guilds)}
 					</p>
 				</div>
 				<div>
-					<h6 class="font-semibold">Total members</h6>
+					<h6 class="font-semibold">Alle Benutzer</h6>
 					<p class="text-gray-500 dark:text-slate-400">{client.stats.members}</p>
 				</div> -->
 				<div>
-					<h6 class="font-semibold">Members (avg)</h6>
+					<h6 class="font-semibold">Benutzer (durch.)</h6>
 					<p class="text-gray-500 dark:text-slate-400">
 						{client.stats.members}
 						({Math.floor(client.stats.members / client.stats.guilds)})
@@ -158,25 +158,36 @@
 <div class="max-w-3xl my-8 mx-auto">
 	<hr class="border-white dark:border-slate-700 mx-24 my-8" />
 	<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-		<a href="https://discordtickets.app" target="_blank" rel="noopener noreferrer">
+		<a href="https://wiki.foxco-network.de/en/discord/ticket-bot" target="_blank" rel="noopener noreferrer">
 			<div
 				class="bg-gray-50/75 dark:bg-slate-800/75 p-4 rounded-xl shadow-sm link flex items-center gap-4"
 			>
 				<i class="fa-solid fa-book text-5xl" />
 				<div>
-					<p class="text-lg font-semibold">Documentation</p>
-					<p>Follow the guide and find answers</p>
+					<p class="text-lg font-semibold">Dokumentation</p>
+					<p>Folge dem Guid um Antworten zu finden</p>
 				</div>
 			</div>
 		</a>
-		<a href="https://lnk.earth/discord" target="_blank" rel="noopener noreferrer">
+		<a href="https://support.foxco-network.de/" target="_blank" rel="noopener noreferrer">
 			<div
 				class="bg-gray-50/75 dark:bg-slate-800/75 p-4 rounded-xl shadow-sm link flex items-center gap-4"
 			>
 				<i class="fa-solid fa-circle-question text-5xl" />
 				<div>
 					<p class="text-lg font-semibold">Support</p>
-					<p>Get help on Discord</p>
+					<p>Erstelle ein Ticket in unserem System</p>
+				</div>
+			</div>
+		</a>
+		<a href="https://discord.com/invite/WnRJxu9" target="_blank" rel="noopener noreferrer">
+			<div
+				class="bg-gray-50/75 dark:bg-slate-800/75 p-4 rounded-xl shadow-sm link flex items-center gap-4"
+			>
+				<i class="fa-brands fa-discord text-5xl" />
+				<div>
+					<p class="text-lg font-semibold">Discord</p>
+					<p>Join gerne der Community</p>
 				</div>
 			</div>
 		</a>

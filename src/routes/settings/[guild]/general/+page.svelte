@@ -33,7 +33,11 @@
 	const expanded = { workingHours: false };
 
 	channels = channels.filter((c) => c.type === 0); // text
-	roles = roles.filter((r) => r.name !== '@everyone');
+	roles = roles.filter((r) => r.name !== '@everyone').sort((a, b) => b.rawPosition - a.rawPosition);
+	roles.forEach((r) => {
+		r._hexColor = r.color > 0 ? `#${r.color.toString(16).padStart(6, '0')}` : null;
+		r._style = r._hexColor ? `color: ${r._hexColor}` : '';
+	});
 	settings.autoClose = settings.autoClose ? ms(settings.autoClose) : '';
 	settings.logChannel = settings.logChannel ?? '';
 	settings.staleAfter = settings.staleAfter ? ms(settings.staleAfter) : '';
@@ -62,7 +66,7 @@
 				body: JSON.stringify(json),
 				credentials: 'include',
 				headers: {
-					'Content-type': 'application/json; charset=UTF-8'
+					'Content-Type': 'application/json; charset=UTF-8'
 				}
 			});
 			const body = await response.json();
@@ -119,7 +123,7 @@
 						class="fa-solid fa-circle-question text-gray-500 dark:text-slate-400 cursor-help"
 						title="Wie lange soll der Bot warten, bevor er ein Ticket schließt (bei Schließ- Anfragen und veralteten Anfragen)?"
 					/>
-					<input type="text" class="form-input input" bind:value={settings.autoClose} required />
+					<input type="text" class="form-input input" bind:value={settings.autoClose} />
 				</label>
 			</div>
 			<div>
@@ -176,12 +180,13 @@
 					/>
 					<select
 						multiple
-						class="form-multiselect input font-normal"
+						class="form-multiselect input font-normal h-44"
 						bind:value={settings.blocklist}
 					>
 						{#each roles as role}
-							<option value={role.id} class="p-1 m-1 rounded">
-								<i class="fa-solid fa-at text-gray-500 dark:text-slate-400" />
+							<option value={role.id} class="p-1 m-1 rounded" style={role._style}>
+								<i class="fa-solid fa-at text-gray-500 dark:text-slate-400" style={role._style} />
+								{role.unicodeEmoji || ''}
 								{role.name}
 							</option>
 						{/each}

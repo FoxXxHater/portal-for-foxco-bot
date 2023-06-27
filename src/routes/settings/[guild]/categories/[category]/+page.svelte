@@ -5,6 +5,7 @@
 	import ms from 'ms';
 	import emoji from 'emoji-name-map';
 	import { marked } from 'marked';
+	import { v4 as uuidv4 } from 'uuid';
 	import CategoryQuestions from '$components/CategoryQuestions/Questions.svelte';
 	import Required from '$components/Required.svelte';
 	import { getContext, onMount } from 'svelte';
@@ -19,7 +20,9 @@
 	});
 
 	onMount(async () => {
-		const { applyPolyfills, defineCustomElements } = await import('@skyra/discord-components-core/loader');
+		const { applyPolyfills, defineCustomElements } = await import(
+			'@skyra/discord-components-core/loader'
+		);
 		applyPolyfills().then(() => {
 			defineCustomElements();
 		});
@@ -51,12 +54,12 @@
 	];
 
 	channels = channels.filter((c) => c.type === 4); // category
-	roles = roles.filter((r) => r.name !== '@everyone');
+	roles = roles.filter((r) => r.name !== '@everyone').sort((a, b) => b.rawPosition - a.rawPosition);
 	roles.forEach((r) => {
 		r._hexColor = r.color > 0 ? `#${r.color.toString(16).padStart(6, '0')}` : null;
 		r._style = r._hexColor ? `color: ${r._hexColor}` : '';
 	});
-	category.questions.forEach((q) => (q._id = q.id));
+
 	category.cooldown = category.cooldown ? ms(category.cooldown) : '';
 
 	let error = null;
@@ -70,7 +73,6 @@
 			const json = { ...category };
 
 			if (category.discordCategory === 'new') json.discordCategory = null;
-			json.questions.forEach((q) => delete q._id);
 			json.cooldown = category.cooldown ? ms(category.cooldown) : null;
 
 			json.questions.forEach((q) => {
@@ -85,7 +87,7 @@
 				body: JSON.stringify(json),
 				credentials: 'include',
 				headers: {
-					'Content-type': 'application/json; charset=UTF-8'
+					'Content-Type': 'application/json; charset=UTF-8'
 				}
 			});
 			const body = await response.json();
@@ -117,10 +119,7 @@
 
 			const response = await fetch(url, {
 				method: 'DELETE',
-				credentials: 'include',
-				headers: {
-					'Content-type': 'application/json; charset=UTF-8'
-				}
+				credentials: 'include'
 			});
 			const body = await response.json();
 
@@ -138,6 +137,9 @@
 
 	const getRole = (id) => roles.find((r) => r.id === id);
 
+	$: category.customTopic = category.questions.find((q) => q.id === category.customTopic)
+		? category.customTopic
+		: null;
 	$: category.requireTopic = category.questions.length > 0 ? false : category.requireTopic;
 </script>
 
@@ -442,6 +444,7 @@
 							{#each roles as role}
 								<option value={role.id} class="p-1 m-1 rounded" style={role._style}>
 									<i class="fa-solid fa-at text-gray-500 dark:text-slate-400" style={role._style} />
+									{role.unicodeEmoji || ''}
 									{role.name}
 								</option>
 							{/each}
@@ -484,6 +487,7 @@
 							{#each roles as role}
 								<option value={role.id} class="p-1 m-1 rounded" style={role._style}>
 									<i class="fa-solid fa-at text-gray-500 dark:text-slate-400" style={role._style} />
+									{role.unicodeEmoji || ''}
 									{role.name}
 								</option>
 							{/each}
@@ -524,6 +528,7 @@
 							{#each roles as role}
 								<option value={role.id} class="p-1 m-1 rounded" style={role._style}>
 									<i class="fa-solid fa-at text-gray-500 dark:text-slate-400" style={role._style} />
+									{role.unicodeEmoji || ''}
 									{role.name}
 								</option>
 							{/each}
@@ -572,7 +577,7 @@
 										</option>
 										<option disabled>------------</option>
 										{#each category.questions as q}
-											<option value={q._id} class="p-1">
+											<option value={q.id} class="p-1">
 												<i class="fa-solid fa-at text-gray-500 dark:text-slate-400" />
 												{q.label}
 											</option>

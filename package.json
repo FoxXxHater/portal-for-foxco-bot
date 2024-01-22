@@ -1,7 +1,7 @@
 {
 	"name": "@foxco-portal/settings",
 	"private": false,
-	"version": "2.1.7",
+	"version": "2.2.2",
 	"main": "build/index.js",
 	"files": [
 		"build/"

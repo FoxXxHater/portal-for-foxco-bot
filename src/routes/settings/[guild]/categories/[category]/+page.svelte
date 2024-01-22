@@ -77,8 +77,10 @@
 
 			json.questions.forEach((q) => {
 				if (q.type === 'TEXT') {
-					if (q.value.length < q.minLength) throw `Der Wert der "${q.label}" Frage ist kürzer als das Minimum.`;
-					if (q.value.length > q.maxLength) throw `Der Wert der "${q.label}" Frage ist länger als das Maximum.`;
+					if (q.value.length < q.minLength)
+						throw `Der Wert der "${q.label}" Frage ist kürzer als das Minimum.`;
+					if (q.value.length > q.maxLength)
+						throw `Der Wert der "${q.label}" Frage ist länger als das Maximum.`;
 				}
 			});
 
